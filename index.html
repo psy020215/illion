@@ -6,7 +6,7 @@
 <title>이리온 코리아 | ILION KOREA</title>
 <meta name="description" content="(주)이리온 코리아 — 화장품 원료 공급 기업. 취급 원료, 회사 소개, 공지사항, 문의.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="home">
@@ -14,70 +14,87 @@
 
 <section class="hero">
   <div class="wrap">
-    <div>
+    <div class="rv">
       <img class="hero-logo" src="assets/logo-full.png" alt="ILION KOREA — New idea &amp; value for cosmetics" width="1000" height="678">
-      <div class="kicker" id="h-kicker">Cosmetic Raw Materials · Since 2018</div>
-      <h1><span id="h-t1">가치 있는 제품을 위한</span><br><b id="h-t2">새로운 아이디어와 원료</b></h1>
+      <div class="label" id="h-kicker">Cosmetic Raw Materials · Since 2018</div>
+      <h1><span id="h-t1">가치 있는 제품을 위한</span><br><em id="h-t2">새로운 아이디어와 원료</em></h1>
       <p id="h-intro">(주)이리온 코리아는 화장품 원료를 공급하는 기업입니다.</p>
       <div class="btns">
         <a class="btn pri" href="products.html">취급 원료 보기 →</a>
         <a class="btn sec" href="contact.html">원료 문의</a>
       </div>
     </div>
-    <div class="fig neural" id="neural" data-theme="light">
-      <img src="assets/hero-network.jpg" alt="" aria-hidden="true">
-      <canvas aria-label="핀과 실로 엮인 네트워크 그래픽. 마우스를 올리면 신호가 퍼집니다" role="img"></canvas>
-      <span class="hint">마우스를 올리거나 터치하면 신호가 퍼집니다</span>
+    <div class="mosaic">
+      <div class="tile net rv">
+        <div class="cap">원료와 아이디어를 잇는<br>네트워크<small>국내외 제조사와 고객을 연결합니다</small></div>
+        <div class="fig neural" id="neural" data-theme="light">
+          <img src="assets/hero-network.jpg" alt="" aria-hidden="true">
+          <canvas aria-label="핀과 실로 엮인 네트워크 그래픽. 마우스를 올리면 신호가 퍼집니다" role="img"></canvas>
+        </div>
+        <span class="hint">마우스를 올리거나 터치해 보세요</span>
+      </div>
+      <a class="tile photo rv" href="about.html">
+        <img src="assets/img/about-photo.jpg" alt="연두색 배경 위 화장품 크림과 초록 잎" loading="eager">
+        <div class="cap">회사 소개 →</div>
+      </a>
+      <a class="tile num rv" href="products.html">
+        <div class="cap">취급 원료</div>
+        <b id="hero-count">138</b><span>개 원료 · <span id="hero-makers">23</span>개 제조사</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="band">
+<section class="statement">
+  <p id="statement">고객이 만족하는 그날까지, 우리가 가진 전문성과 모든 자원을 다해 <span class="hl">혁신과 지속가능성</span>에 집중합니다.</p>
+</section>
+
+<section class="band" style="padding-top:0">
   <div class="wrap">
-    <div class="shead">
-      <div><h2>취급 분야</h2><p class="muted" style="margin:0">효능별로 원료를 찾아보세요.</p></div>
+    <div class="shead rv">
+      <div><span class="label">Products</span><h2>취급 분야</h2><p class="muted">효능별로 원료를 찾아보세요.</p></div>
       <a class="more" href="products.html">전체 원료 보기 →</a>
     </div>
     <div class="grid" id="cats"><p class="loading">불러오는 중…</p></div>
   </div>
 </section>
 
-<section class="band soft">
+<section class="band dark">
   <div class="wrap">
-    <div class="shead"><h2>숫자로 보는 이리온 코리아</h2></div>
-    <div class="stats" id="stats"></div>
+    <div class="shead rv"><div><span class="label">ILION KOREA in numbers</span><h2>숫자로 보는 이리온 코리아</h2></div></div>
+    <div class="stats rv" id="stats"></div>
   </div>
 </section>
 
 <section class="band">
   <div class="wrap">
-    <div class="shead">
-      <div><h2>이리온 코리아 자체 원료</h2><p class="muted" style="margin:0">직접 개발해 공급하는 원료입니다.</p></div>
+    <div class="shead rv">
+      <div><span class="label">Our Ingredients</span><h2>이리온 코리아 자체 원료</h2><p class="muted">직접 개발해 공급하는 원료입니다.</p></div>
       <a class="more" href="products.html?maker=ILION%20KOREA">자체 원료만 보기 →</a>
     </div>
     <div class="grid" id="own"></div>
   </div>
 </section>
 
-<section class="band" style="padding-top:0">
+<section class="band soft">
   <div class="wrap">
-    <div class="shead"><h2>공지사항</h2><a class="more" href="notice.html">전체 보기 →</a></div>
-    <ul class="news" id="news"></ul>
+    <div class="shead rv"><div><span class="label">Newsroom</span><h2>새로운 소식</h2></div><a class="more" href="notice.html">전체 보기 →</a></div>
+    <ul class="news rv" id="news"></ul>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="label">Partners</span><h2>협력 제조사</h2><p class="muted">제조사를 누르면 해당 원료만 볼 수 있어요.</p></div></div>
+    <div class="makers rv" id="makers"></div>
   </div>
 </section>
 
 <section class="band" style="padding-top:0">
   <div class="wrap">
-    <div class="shead"><div><h2>협력 제조사</h2><p class="muted" style="margin:0">제조사를 누르면 해당 원료만 볼 수 있어요.</p></div></div>
-    <div class="makers" id="makers"></div>
-  </div>
-</section>
-
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <div class="cta">
+    <div class="cta rv">
       <div><h2>찾으시는 원료가 있나요?</h2><p>원하는 효능과 제형을 알려주시면 맞는 원료를 제안해 드립니다.</p></div>
-      <a class="btn pri" href="contact.html">문의하기 →</a>
+      <a class="btn" href="contact.html">문의하기 →</a>
     </div>
   </div>
 </section>

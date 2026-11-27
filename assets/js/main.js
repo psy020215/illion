@@ -1,5 +1,6 @@
 /* 공통: 내용 파일 읽기 + 머리말/꼬리말
    내용은 content/ 폴더의 파일에서 고치세요. 이 파일은 고칠 필요가 없어요. */
+document.documentElement.classList.add('js');
 window.ILION = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -95,5 +96,55 @@ window.ILION = (() => {
       <div class="copy">© ${new Date().getFullYear()} ${esc(c.name_en || c.short)} All rights reserved.</div></div>`;
   }).catch(e => fail(footer, e));
 
-  return { esc, site, products, notices, effects, inCat, isOwn, fail };
+  // ── 움직임: 스크롤 등장, 숫자 카운트업, 큰 문장, 맨 위로 버튼 ──
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => {
+    for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -8% 0px' }) : null;
+  const reveal = () => document.querySelectorAll('.rv:not(.in)').forEach(el => (io && !still) ? io.observe(el) : el.classList.add('in'));
+  reveal();
+
+  const countUp = root => {
+    const els = root.querySelectorAll('[data-n]');
+    const run = el => {
+      const to = +el.dataset.n, from = +(el.dataset.from || 0);
+      if (still || !isFinite(to)) { el.textContent = el.dataset.n; return; }
+      const t0 = performance.now(), D = 1400;
+      const step = now => { const k = Math.min(1, (now - t0) / D), e = 1 - (1 - k) ** 3;
+        el.textContent = Math.round(from + (to - from) * e); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    };
+    if (!('IntersectionObserver' in window)) return els.forEach(run);
+    const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); els.forEach(run); } }), { threshold: .4 });
+    o.observe(root);
+  };
+
+  const st = document.getElementById('statement');
+  if (st) {
+    const parts = [];
+    for (const node of [...st.childNodes]) {
+      const hl = node.nodeType === 1, txt = node.textContent;
+      txt.split(/(\s+)/).forEach(w => { if (!w) return;
+        if (/^\s+$/.test(w)) parts.push(document.createTextNode(w));
+        else { const sp = document.createElement('span'); sp.textContent = w; if (hl) sp.className = 'hl'; parts.push(sp); } });
+    }
+    st.replaceChildren(...parts);
+    const words = st.querySelectorAll('span');
+    const paint = () => {
+      const r = st.getBoundingClientRect(), vh = innerHeight;
+      const p = still ? 1 : Math.min(1, Math.max(0, (vh * .85 - r.top) / (vh * .5)));
+      const k = Math.round(p * words.length);
+      words.forEach((w, i) => w.classList.toggle('on', i < k));
+    };
+    addEventListener('scroll', paint, { passive: true }); paint();
+  }
+
+  const top = document.createElement('button');
+  top.className = 'totop'; top.type = 'button'; top.setAttribute('aria-label', '맨 위로'); top.textContent = '↑';
+  top.addEventListener('click', () => scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' }));
+  document.body.append(top);
+  const onScroll = () => { top.classList.toggle('show', scrollY > 600); header?.classList.toggle('scrolled', scrollY > 10); };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  return { esc, site, products, notices, effects, inCat, isOwn, fail, reveal, countUp };
 })();

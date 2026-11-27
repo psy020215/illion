@@ -109,7 +109,7 @@
     const lw = () => Math.max(.45, sc / 900);
     const weaveTo = n => {
       lctx.globalCompositeOperation = light ? 'source-over' : 'lighter';
-      lctx.strokeStyle = light ? 'rgba(16,40,70,.12)' : 'rgba(235,240,250,.15)';
+      lctx.strokeStyle = light ? 'rgba(34,58,18,.12)' : 'rgba(235,240,250,.15)';
       lctx.lineWidth = lw();
       lctx.beginPath();
       for (; drawn < n && drawn < threads.length; drawn++) {
@@ -152,7 +152,7 @@
       // shuttle: the thread being woven right now
       if (drawn < threads.length && drawn > 0) {
         const t = threads[drawn - 1];
-        ctx.strokeStyle = light ? 'rgba(30,107,123,.9)' : 'rgba(143,211,255,.9)'; ctx.lineWidth = 1.2;
+        ctx.strokeStyle = light ? 'rgba(120,175,40,.95)' : 'rgba(143,211,255,.9)'; ctx.lineWidth = 1.2;
         ctx.beginPath(); ctx.moveTo(X(t.ax), Y(t.ay)); ctx.lineTo(X(t.bx), Y(t.by)); ctx.stroke();
       }
 
@@ -170,12 +170,12 @@
         const p = Math.min(1, s.p), q = Math.max(0, p - .22);
         const hx = X(x0 + (x1 - x0) * p), hy = Y(y0 + (y1 - y0) * p);
         const tx = X(x0 + (x1 - x0) * q), ty = Y(y0 + (y1 - y0) * q);
-        const col = light ? (s.pink ? '217,70,111' : '30,120,140') : (s.pink ? '255,92,138' : '143,211,255');
+        const col = light ? (s.pink ? '75,127,20' : '140,196,50') : (s.pink ? '255,92,138' : '143,211,255');
         const g = ctx.createLinearGradient(tx, ty, hx, hy);
         g.addColorStop(0, `rgba(${col},0)`); g.addColorStop(1, `rgba(${col},.95)`);
         ctx.strokeStyle = g; ctx.lineWidth = 1.6;
         ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(hx, hy); ctx.stroke();
-        ctx.fillStyle = light ? 'rgba(16,33,58,.95)' : 'rgba(255,255,255,.95)';
+        ctx.fillStyle = light ? 'rgba(23,34,15,.95)' : 'rgba(255,255,255,.95)';
         ctx.beginPath(); ctx.arc(hx, hy, 1.8, 0, 7); ctx.fill();
         if (s.p >= 1) {
           sigs.splice(i, 1);
@@ -190,11 +190,11 @@
         if (n.glow > .02) {
           const r = 6 + n.glow * 14;
           const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-          g.addColorStop(0, light ? `rgba(43,138,156,${.45 * n.glow})` : `rgba(200,235,255,${.75 * n.glow})`); g.addColorStop(1, light ? 'rgba(43,138,156,0)' : 'rgba(143,211,255,0)');
+          g.addColorStop(0, light ? `rgba(156,204,60,${.55 * n.glow})` : `rgba(200,235,255,${.75 * n.glow})`); g.addColorStop(1, light ? 'rgba(156,204,60,0)' : 'rgba(143,211,255,0)');
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
           n.glow *= Math.pow(.12, dt);
         }
-        ctx.fillStyle = light ? (n.kind === 'g' ? 'rgba(16,33,58,.6)' : 'rgba(16,33,58,.85)') : (n.kind === 'g' ? 'rgba(230,225,220,.75)' : 'rgba(245,240,235,.9)');
+        ctx.fillStyle = light ? (n.kind === 'g' ? 'rgba(23,34,15,.55)' : 'rgba(23,34,15,.85)') : (n.kind === 'g' ? 'rgba(230,225,220,.75)' : 'rgba(245,240,235,.9)');
         ctx.beginPath(); ctx.arc(x, y, n.kind === 'g' ? 1.4 : 2.2, 0, 7); ctx.fill();
       }
       ctx.globalCompositeOperation = 'source-over';

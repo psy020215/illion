@@ -14,24 +14,27 @@
 
       $('cats').innerHTML = cats.map(cat => {
         const n = ps.filter(p => inCat(p, cat)).length;
-        return `<a class="card" href="products.html?cat=${encodeURIComponent(cat.name)}">
-          <h3>${esc(cat.name)}</h3><p>${esc(cat.desc)}</p><span class="go">${n}개 원료 보기 →</span></a>`;
+        return `<a class="card cat-card rv" href="products.html?cat=${encodeURIComponent(cat.name)}">
+          <div class="n">${n}</div><h3>${esc(cat.name)}</h3><p>${esc(cat.desc)}</p><span class="go">원료 보기 →</span></a>`;
       }).join('');
 
       const makers = [...new Set(ps.map(p => p.maker))];
       const own = ps.filter(p => isOwn(p, s));
       $('stats').innerHTML = [
-        [c.founded, '설립'], [ps.length, '취급 원료'], [makers.length, '협력 제조사'], [own.length, '자체 개발 원료']
-      ].map(([v, l]) => `<div><b>${esc(v)}</b><span>${l}</span></div>`).join('');
+        [c.founded, '', '설립 연도', 1990], [ps.length, '+', '취급 원료', 0], [makers.length, '', '협력 제조사', 0], [own.length, '', '자체 개발 원료', 0]
+      ].map(([v, suf, l, from]) => `<div><b><span data-n="${esc(v)}" data-from="${from}">${esc(v)}</span><i>${suf}</i></b><span>${l}</span></div>`).join('');
+      setText('hero-count', ps.length); setText('hero-makers', makers.length);
+      window.ILION.countUp($('stats'));
 
-      $('own').innerHTML = own.map(p => `<a class="card own-card" href="products.html?q=${encodeURIComponent(p.name)}">
+      $('own').innerHTML = own.map(p => `<a class="card own-card rv" href="products.html?q=${encodeURIComponent(p.name)}">
         <h3>${esc(p.name)}</h3>${p.eff ? effTags(p) : ''}<p class="inci" style="margin-top:10px">${esc(p.inci)}</p></a>`).join('');
 
-      $('news').innerHTML = ns.slice(0, 3).map(n => `<li><a href="notice.html#${n.id}"><time datetime="${esc(n.date)}">${esc(n.date.replace(/-/g, '.'))}</time>
-        <div><h3>${esc(n.title)}</h3><p>${esc(n.body.replace(/[*_#>\[\]()`]/g, '').slice(0, 80))}${n.body.length > 80 ? '…' : ''}</p></div><span class="tag">공지</span></a></li>`).join('')
+      $('news').innerHTML = ns.slice(0, 3).map(n => `<li><a href="notice.html#${n.id}"><span class="label">Notice</span>
+        <h3>${esc(n.title)}</h3><p>${esc(n.body.replace(/[*_#>\[\]()`]/g, ''))}</p><time datetime="${esc(n.date)}">${esc(n.date.replace(/-/g, '.'))}</time></a></li>`).join('')
         || '<li class="empty">등록된 공지가 없어요.</li>';
 
       $('makers').innerHTML = makers.map(m => `<a href="products.html?maker=${encodeURIComponent(m)}">${esc(m)}<span>${ps.filter(p => p.maker === m).length}</span></a>`).join('');
+      window.ILION.reveal();
     }).catch(e => fail($('cats'), e));
   }
 
@@ -85,7 +88,7 @@
   if (page === 'about') {
     site.then(s => {
       const a = s.about || {}, c = s.company || {};
-      setText('lead', a.lead); setText('intro-ko', a.intro_ko); setText('intro-en', a.intro_en);
+      setText('lead2', a.lead); setText('intro-ko', a.intro_ko); setText('intro-en', a.intro_en);
       $('values').innerHTML = (a.values || []).map(v => `<div class="card"><h3>${esc(v.title)}</h3><p>${esc(v.text)}</p></div>`).join('');
       $('history').innerHTML = (a.history || []).map(h => `<li><b>${esc(h.year)}</b><div>${esc(h.text)}</div></li>`).join('');
       contact(c);
