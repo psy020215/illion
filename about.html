@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>회사 소개 | Acme AI</title>
+<title>회사 소개 | 이리온 코리아</title>
+<meta name="description" content="(주)이리온 코리아 — 화장품 원료 공급 기업. 취급 원료, 회사 소개, 공지사항, 문의.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -13,46 +14,32 @@
 <section class="phead"><div class="wrap">
   <div class="crumb"><a href="index.html">홈</a> / 회사 소개</div>
   <h1><b>회사 소개</b></h1>
-  <p>데이터와 AI로 산업의 문제를 해결하는 기술 기업, Acme AI를 소개합니다.</p>
+  <p id="lead">고객이 만족하는 그날까지, 혁신과 지속가능성에 집중합니다.</p>
 </div></section>
 
 <section class="band"><div class="wrap split">
-  <div><h2>미션</h2><p class="muted">우리는 모든 조직이 자신의 데이터에서 답을 찾을 수 있어야 한다고 믿습니다.</p></div>
-  <div><p>Acme AI는 2021년 데이터 과학자와 소프트웨어 엔지니어가 모여 설립했습니다. 연구실의 알고리즘을 현장의 도구로 옮기는 일, 즉 정확한 모델을 실제 업무 흐름 안에서 꾸준히 작동하게 만드는 일에 집중합니다.</p>
-  <p>제조, 유통, 공공 분야의 고객과 함께 데이터 기반을 다지고, 예측과 자동화를 통해 측정 가능한 변화를 만들어 왔습니다.</p></div>
-</div></section>
-
-<section class="band dark"><div class="wrap">
-  <div class="shead"><h2>핵심 가치</h2></div>
-  <div class="grid">
-    <div class="card" style="background:#123359;border-color:#1d4a78"><h3 style="color:#8fd3ff">정확함</h3><p style="color:#c9dbec">검증 가능한 결과만 약속합니다. 모델의 한계도 함께 설명합니다.</p></div>
-    <div class="card" style="background:#123359;border-color:#1d4a78"><h3 style="color:#8fd3ff">연결</h3><p style="color:#c9dbec">데이터, 사람, 시스템을 잇는 것이 우리의 일입니다.</p></div>
-    <div class="card" style="background:#123359;border-color:#1d4a78"><h3 style="color:#8fd3ff">책임</h3><p style="color:#c9dbec">도입 이후 운영까지, 결과가 현장에 남을 때까지 함께합니다.</p></div>
-  </div>
-</div></section>
-
-<section class="band"><div class="wrap split">
-  <div><h2>연혁</h2><p class="muted">작은 팀에서 시작해 한 걸음씩 걸어왔습니다.</p></div>
-  <ol class="tl">
-    <li><b>2026</b><div>엔터프라이즈 AI 플랫폼 정식 출시<br><span class="muted">제조 품질 예측 실증 사업 착수</span></div></li>
-    <li><b>2024</b><div>시리즈 A 투자 유치<br><span class="muted">기업부설연구소 설립</span></div></li>
-    <li><b>2022</b><div>첫 데이터 파이프라인 제품 출시</div></li>
-    <li><b>2021</b><div>Acme AI 설립</div></li>
-  </ol>
+  <div><h2>회사 개요</h2></div>
+  <div><p id="intro-ko"></p><p class="en" id="intro-en"></p></div>
 </div></section>
 
 <section class="band" style="padding-top:0"><div class="wrap">
-  <div class="shead"><h2>리더십</h2></div>
-  <div class="grid">
-    <div class="card person"><div class="avatar">K</div><h3>김OO</h3><p>대표이사 · CEO</p></div>
-    <div class="card person"><div class="avatar">L</div><h3>이OO</h3><p>최고기술책임자 · CTO</p></div>
-    <div class="card person"><div class="avatar">P</div><h3>박OO</h3><p>연구소장 · Head of Research</p></div>
-    <div class="card person"><div class="avatar">C</div><h3>최OO</h3><p>사업총괄 · CBO</p></div>
-  </div>
-  <p class="sample">연혁·인물 정보는 시안용 예시입니다.</p>
+  <div class="shead"><h2>우리가 하는 일</h2></div>
+  <div class="grid" id="values"></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap split">
+  <div><h2>연혁</h2></div>
+  <ol class="tl" id="history"></ol>
+</div></section>
+
+<section class="band dark"><div class="wrap split">
+  <div><h2>오시는 길</h2><dl class="info" id="info" style="color:#fff"></dl></div>
+  <iframe class="map" id="map" title="이리온 코리아 위치 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div></section>
 
 <footer id="site-footer"></footer>
+<script src="assets/vendor/js-yaml.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/pages.js"></script>
 </body>
 </html>
