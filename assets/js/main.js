@@ -72,7 +72,7 @@ window.ILION = (() => {
   if (header) {
     header.className = 'top';
     header.innerHTML = `<div class="wrap">
-      <a class="logo" href="index.html"><span class="logo-text"><span>ILION KOREA</span><small>(주)이리온 코리아</small></span></a>
+      <a class="logo" href="index.html"><img class="mark" src="assets/logo-mark.png" alt="" width="34" height="43"><span class="logo-text"><span>ILION KOREA</span><small>(주)이리온 코리아</small></span></a>
       <button class="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav">☰</button>
       <nav class="nav" id="nav">${links.map(([k, h, t]) => `<a href="${h}"${k === page ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav></div>`;
     const btn = header.querySelector('.menu'), nav = header.querySelector('.nav');
@@ -86,7 +86,7 @@ window.ILION = (() => {
     if (!footer) return;
     footer.className = 'foot';
     footer.innerHTML = `<div class="wrap">
-      <div><a class="logo" href="index.html" style="color:#fff"><span class="logo-text"><span>${esc(c.short)}</span><small>${esc(c.name_ko)}</small></span></a>
+      <div><a class="logo" href="index.html"><img class="mark" src="assets/logo-mark-white.png" alt="" width="34" height="43"><span class="logo-text"><span>${esc(c.short)}</span><small>${esc(c.name_ko)}</small></span></a>
         <p style="margin-top:12px">${esc(c.name_en)}</p></div>
       <div><h4>바로가기</h4>${links.map(([, h, t]) => `<a href="${h}">${t}</a>`).join('')}</div>
       <div><h4>연락처</h4><span>${esc(c.address)}</span><br>
